@@ -62,7 +62,6 @@ const Error = styled(Typography)`
     margin-top: 10px;
     font-weight: 600;
 `
-// height: 70vh;
 
 const Image = styled(Box)`
     background: #2874f0 url(https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/login_img_c4a81e.png) center 85% no-repeat;
@@ -82,7 +81,6 @@ const loginInitialValues = {
 const signupInitialValues = {
     firstname: '',
     lastname: '',
-    // username: '',
     email: '',
     password: '',
     phone: ''
@@ -100,7 +98,6 @@ const accountInitialValues = {
         heading: "Looks like you're new here",
         subHeading: 'Signup to get started'
     }
-
 }
 
 const LoginDialog = ({ open, setOpen }) => {
