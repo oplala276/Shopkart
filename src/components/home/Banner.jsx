@@ -13,11 +13,6 @@ const Image = styled('img')(({ theme }) => ({
         height: 180
     }
 }));
-// const Image = styled('img')({
-//     width: '100%',
-//     height: 280
-// })
-
 
 const responsive = {
     desktop: {

@@ -1,10 +1,13 @@
-import { Box, Button, Typography, styled } from '@mui/material';
+import { Box, Button, Typography, styled, Badge } from '@mui/material';
 
 import { ShoppingCart } from '@mui/icons-material'
+import { Link } from 'react-router-dom'
+
 import { useContext, useState } from 'react';
 import LoginDialog from '../login/LoginDialog';
+import { useSelector } from 'react-redux';
 
-import {LoginContext} from '../../context/ContextProvider';
+import { LoginContext } from '../../context/ContextProvider';
 import Profile from './Profile';
 
 const Wrapper = styled(Box)(({ theme }) => ({
@@ -12,25 +15,18 @@ const Wrapper = styled(Box)(({ theme }) => ({
     display: 'flex',
     '& > *': {
         marginRight: '40px !important',
-        textDecoration: 'none',
-        color: '#FFFFFF',
-        fontSize: 12,
+        fontSize: 16,
         alignItems: 'center',
-        [theme.breakpoints.down('sm')]: {
-            color: '#2874f0',
-            alignItems: 'center',
-            display: 'flex',
-            flexDirection: 'column',
-            marginTop: 10
-        }
     },
     [theme.breakpoints.down('sm')]: {
         display: 'block'
     }
 }));
 
-const Container = styled(Box)(({ theme }) => ({
+const Container = styled(Link)(({ theme }) => ({
     display: 'flex',
+    textDecoration: 'none',
+    color: 'inherit',
     [theme.breakpoints.down('sm')]: {
         display: 'block'
     }
@@ -38,7 +34,7 @@ const Container = styled(Box)(({ theme }) => ({
 
 const LoginButton = styled(Button)(({ theme }) => ({
     color: '#2874f0',
-    marginLeft:10,
+    marginLeft: 10,
     background: '#FFFFFF',
     textTransform: 'none',
     fontWeight: 600,
@@ -55,74 +51,34 @@ const LoginButton = styled(Button)(({ theme }) => ({
 
 const CustomButtons = () => {
     const [open, setOpen] = useState(false);
-    const {account, setAccount} = useContext(LoginContext);
+    const { account, setAccount } = useContext(LoginContext);
 
-    const openDialog = () =>{
+    const cartDetails = useSelector(state => state.cart);
+    const { cartItems } = cartDetails;
+    const openDialog = () => {
         setOpen(true);
     }
     return (
         <Wrapper>
             {
-                account? <Profile account={account} setAccount={setAccount}/>:
-                    <LoginButton variant='contained' onClick={()=>openDialog()}>
+                account ? <Profile account={account} setAccount={setAccount} /> :
+                    <LoginButton variant='contained' onClick={() => openDialog()}>
                         login
                     </LoginButton>
-                
+
             }
             <Typography style={{ marginTop: 3, width: 135 }}>Become a Seller</Typography>
-            <Typography style={{ marginTop: 3 }}>More</Typography>
-            <Container>
-                <ShoppingCart/>
-                Cart
+            <Container to="/cart">
+                <Typography style={{ marginTop: 3, marginRight: 30 }}>More</Typography>                <Badge badgeContent={cartItems?.length} color="secondary">
+                    <ShoppingCart />
+                </Badge>
+                <Typography style={{ marginLeft: 6 }}>
+                    Cart
+                </Typography>
             </Container>
-            <LoginDialog open={open} setOpen = {setOpen}/>
+            <LoginDialog open={open} setOpen={setOpen} />
         </Wrapper>
     )
 }
 
 export default CustomButtons;
-
-
-
-// import React, { useState, useContext } from 'react';
-
-// import { Link } from 'react-router-dom';
-// import { LoginContext } from '../../context/ContextProvider';
-// import { useSelector } from 'react-redux';
-
-// import Profile from './Profile';
-
-
-
-// const CustomButtons = () => {
-    
-//     const [open, setOpen] = useState(false);
-//     const { account, setAccount } = useContext(LoginContext);
-
-//     const cartDetails = useSelector(state => state.cart);
-//     const { cartItems } = cartDetails;
-
-//     const openDialog = () => {
-//         setOpen(true);
-//     }
-
-//     return (
-//         <Wrapper>
-//             {
-//                 account ? <Profile account={account} setAccount={setAccount} /> :
-//                     <LoginButton variant="contained" onClick={() => openDialog()}>Login</LoginButton>
-                
-//             }
-            
-//             <Container to='/cart'>
-//                 <Badge badgeContent={cartItems?.length} color="secondary">
-//                     <ShoppingCart />
-//                 </Badge>
-//                 <Typography style={{ marginLeft: 10 }}>Cart</Typography>
-//             </Container>
-//             <LoginDialog open={open} setOpen={setOpen} setAccount={setAccount} />
-//         </Wrapper>
-//     )
-// }
-
-// export default CustomButtons;

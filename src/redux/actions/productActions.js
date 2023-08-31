@@ -22,9 +22,3 @@ export const getProductDetails = (id) => async (dispatch) => {
         dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_FAIL, payload: error.response });
     }
 };
-
-
-export const removeProductDetails = () => (dispatch) => {
-    dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_RESET });
-
-};

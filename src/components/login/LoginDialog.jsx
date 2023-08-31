@@ -163,7 +163,7 @@ const LoginDialog = ({ open, setOpen }) => {
                             <LoginButton onClick={() => loginUser()}>Login</LoginButton>
                             <Typography style={{ textAlign: 'center' }}>OR</Typography>
                             <RequestOTP>Request OTP</RequestOTP>
-                            <CreateAccount onClick={() => toggleSignup()}>New to Shopkart? Create an account</CreateAccount>
+                            <CreateAccount onClick={() => toggleSignup()}>New to Flipkart? Create an account</CreateAccount>
                         </Wrapper>
                         :
                         <Wrapper>
