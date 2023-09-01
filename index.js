@@ -46,7 +46,7 @@ app.post('/create-checkout-session', async (req, res) => {
             },
         ],
         mode: 'payment',
-        success_url: 'https://shopkart-zx4t.onrender.com/cart',
+        success_url: 'https://shopkart-zx4t.onrender.com/',
         cancel_url: 'https://shopkart-zx4t.onrender.com/',
     });
 
