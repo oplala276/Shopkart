@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8000';
+const url = 'https://shopkart-api-server.onrender.com';
+// const url = 'http://localhost:8000';
 
 export const authenticateLogin = async (user) => {
     try {

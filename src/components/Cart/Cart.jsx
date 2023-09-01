@@ -48,7 +48,7 @@ const StyledButton = styled(Button)`
 const stripePromise = loadStripe("pk_test_51Nl0Z7SH958JFqSHMd4HOgLjPrOsubjmunLHVj5piwKe2jWkEeef1ej5QT6rlvC5AMUGJb8nQ78fEiL0QK8FiA2F00HeSIuUf4")
 const buyNow = async () => {
     const stripe = await stripePromise;
-    const response = await fetch('http://localhost:8000/create-checkout-session', {
+    const response = await fetch('https://shopkart-api-server.onrender.com/create-checkout-session', {
         method: 'POST',
     });
     const session = await response.json();
